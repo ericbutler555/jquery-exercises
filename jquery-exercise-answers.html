@@ -82,7 +82,7 @@
     $('.el').slideToggle();
 
     //     - What's a common page element that might use this idea?
-    // Answer: Mobile navigation menu. Others too.
+    // Answer: Mobile navigation menu. Others?
 
     // - How do we make el's background color change? (There are several ways to do this. Could you do it without inline styles?)
     $('.el').css('background-color', 'green');
@@ -94,6 +94,7 @@
 
     //     - Can we use this new back-and-forth idea with other actions?
     $('.el').fadeToggle();
+    $('.el').toggle(); // alternates between "show" and "hide"
 
     // - How do we change the text inside el?
     $('.el').text("Here's my new text!");
@@ -102,7 +103,7 @@
     // Answer: The "text" function replaces EVERYTHING inside el with whatever you write.
 
     //     - What if we wanted to make our new text italic?
-    $('.el').html("<em>Here's my italic text!</em>");
+    $('.el').html("<em>Here's my italic text!</em>"); // need to use ".html" instead.
 
     // - How do we add a photo into el? (http://lorempixel.com/300/200/)
     $('.el').append('<img src="http://lorempixel.com/300/200/>');
@@ -119,7 +120,7 @@
     $('body, .el').css('background-color', 'green');
 
     // - What if we wanted to make el collapse, and THEN change the page's background color?
-    $('.el').slideUp(1000, function(){
+    $('.el').slideUp(2000, function(){
       $('body').css('background-color', 'green');
     });
 
@@ -130,13 +131,16 @@
     $('.el').before('<div class="el alt">Alternative El!</div>');
 
     //     - Whoops! We actually added 2 new elements. Why?
-    // Answer: Because $('.el') selects EVERY element on the page with the "el" class. Since we added 1 with .after(), our new .before() function targeted BOTH of them and put a new element before EACH of them.
+    // Answer: Because $('.el') selects EVERY element on the page with the "el" class. Since we added 1 with .after(), our new .before() function selected BOTH of them and put a new element before EACH of them.
 
     // - How do we get rid of ONLY the first "el" element?
     $('.el').first().remove(); // This is an example of function "chaining": we're first running the "first" function, to more narrowly specify what we're selecting, then we're adding the "remove" function on top of it, to remove just that specific element.
 
     // - How do we only add an element AFTER the last element?
     $('.el').last().after('<div class="el alt2">I am the last El now!</div>');
+
+    // - How do we add an element after the SECOND element?
+    $('.el').eq(2).after('<div class="el alt2">I am the last El now!</div>');
 
     // - How do we detect if the button is clicked on?
     $('input').click();
@@ -146,6 +150,7 @@
     $('input').click(function() {
       // Whatever we put here will execute when the input is clicked.
     });
+    // Or:
     $('input').on('click', function() {
       // This is the exact same as the "click" function above.
     });
@@ -165,7 +170,7 @@
     // - How do we prevent the link click from opening the linked page?
     $('a').on('click', function(e) {
       e.preventDefault(); // since by default clicking on a hyperlink takes you to that linked page, if you prevent the default, it won't take you there.
-      // Hyperlinks and form submissions are the 2 major places where you'll likely use preventDefault.
+      // Note: hyperlinks and form submissions are the 2 major places where you'll likely use preventDefault.
     });
 
     // - How do we detect if the button is hovered over?
@@ -175,13 +180,13 @@
     });
     // Notice I didn't choose .hover() or .mouseover(), which both exist.
     // BAD: $('input').hover(); // This executes on entering AND LEAVING, usually undesirable.
-    // ALSO BAD: $('input').mouseover(); // This executes on entering EVERY CHILD in the element, usually undesirable.
+    // ALSO BAD: $('input').mouseover(); // This re-executes on entering EVERY CHILD in the element, usually undesirable.
 
     // - Man, that's annoying. How do we REMOVE that hover-detecting function we just created?
     $('input').off('mouseenter');
 
     //     - Why is this function called what it is?
-    // Answer: ".mouseenter" is a short-hand alias for the real function name, which is ".on('mouseenter')". "On" adds the event listener to the element, and "off" removes the event listener from the element. You can also think of it like you're "turning off" that event for that handler, if it helps.
+    // Answer: ".mouseenter" is a short-hand alias for the real function name, which is ".on('mouseenter')". "On" adds the event listener to the element, and "off" removes the event listener from the element. You can also think of it like you're "turning off" that event for that element, if it helps.
 
     // - How could we only do something the FIRST time the button is hovered over, but never again?
     $('input').one('mouseenter', function() {
@@ -191,13 +196,18 @@
     // - How do we make our click-function happen without actually clicking on it?
     $('input').trigger('click');
 
-    // - How do we prevent our button click from also being detected as a click on el? (This is a hard one, but really nice to know.)
+    // - How do we prevent our button click from also being detected as a click on el?
+    $('.el').on('click', function() {
+        // This creates a click-handler for el.
+    });
     $('input').on('click', function(e) {
-      e.stopPropagation(); // This event won't "bubble up."
+      e.stopPropagation();
+      // Now, clicking the input won't register a click on el, its parent. This is a common JavaScript concept called "bubbling up."
     });
 
     // - How can we POSSIBLY REMEMBER all these?
     // Answer: We don't have to. They're all listed and explained at http://api.jquery.com/
+    // Bonus: All of these things can be handled by plain JavaScript, sometimes just as easily. Check out http://youmightnotneedjquery.com/ to see how.
   </script>
 
 </body>
