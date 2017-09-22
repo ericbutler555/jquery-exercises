@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>jQuery Exercise</title>
+  <style>
+    .el {
+      width: 50%;
+      margin: 5em auto 0;
+      padding: 2em;
+      background: yellow;
+      border: 1px solid black;
+      text-align: center;
+      font: bold 1em/1.5 sans-serif;
+    }
+    .el.alt {
+      background: green;
+    }
+    .el.alt2 {
+      background: purple;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="el">
+    <p>Hello, I'm el.</p>
+    <p><a href="https://stackoverflow.com/" target="_blank">I'm a link.</a></p>
+    <input type="submit" value="I'm a button">
+  </div>
+
+  <script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
+  <script>
+    //---- jQuery Exercises: ----//
+
+    // - How do we target the HTML element with class "el"?
+    // - How do we make "el" disappear?
+    //     - What exactly happened in the DOM to make el disappear?
+    // - How do we make el re-appear?
+    // - How do we make el disappear slowly? Can we do it even slower?
+    // - How do we make el re-appear slowly? Can we do it faster?
+    // - How do we make el collapse?
+    // - How do we make el re-expand?
+    // - How do we make el collapse if it's there, but expand if it's not, without writing a complicated "if" statement?
+    //     - What's a common page element that might use this idea?
+    // - How do we make el's background color change? (There are several ways to do this. Could you do it without inline styles?)
+    // - How can we go back and forth between classes?
+    //     - Can we use this new back-and-forth idea with other actions?
+    // - How do we change the text inside el?
+    //     - Whoops! Did we remove the link and button too? If so, why?
+    //     - What if we wanted to make our new text italic?
+    // - How do we add a photo into el? (http://lorempixel.com/300/200/)
+    // - How to we get rid of everything inside el, but keep it? Can you think of 2 ways?
+    // - How do we actually take el out of the page entirely (instead of just hiding it)?
+    // - Can we change both the page AND el's background colors in a SINGLE command? If so, how?
+    // - What if we wanted to make el collapse, and THEN change the page's background color?
+    //     - This idea is what developers call a "callback." You'll hear it a lot; it's basically just
+    //       a function that gets triggered as soon as another function finishes.
+    // - How do we add another "el" element onto the page AFTER el?
+    // - How do we add another "el" element onto the page BEFORE el?
+    //     - Whoops! We actually added 2 new elements. Why?
+    // - How do we get rid of ONLY the first "el" element?
+    // - How do we only add an element AFTER the last element?
+    // - How do we detect if the button is clicked on?
+    //     - How do we make something happen when the button is clicked?
+    // - How do we disable the button?
+    //     - Does our click-detecting function work anymore?
+    // - How do we re-enable the button?
+    //     - How could we remove inline styles using this same idea?
+    // - How do we prevent the link click from opening the linked page?
+    // - How do we detect if the button is hovered over?
+    // - Man, that's annoying. How do we REMOVE that hover-detecting function we just created?
+    //     - Why is this function called what it is?
+    // - How could we only do something the FIRST time the button is hovered over, but never again?
+    // - How do we make our click-function happen without actually clicking on it?
+    // - How do we prevent our button click from also being detected as a click on el? (This is a hard one, but really nice to know.)
+
+    // - How can we POSSIBLY REMEMBER all these?
+    //     - We don't have to. They're all listed and explained at http://api.jquery.com/
+  </script>
+
+</body>
+</html>

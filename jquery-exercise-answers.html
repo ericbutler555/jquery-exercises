@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>jQuery Exercise Answers!</title>
+  <style>
+    .el {
+      width: 50%;
+      margin: 5em auto 0;
+      padding: 2em;
+      background: yellow;
+      border: 1px solid black;
+      text-align: center;
+      font: bold 1em/1.5 sans-serif;
+    }
+    .el.alt {
+      background: green;
+    }
+    .el.alt2 {
+      background: purple;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="el">
+    <p>Hello, I'm el.</p>
+    <p><a href="https://stackoverflow.com/" target="_blank">I'm a link.</a></p>
+    <input type="submit" value="I'm a button">
+  </div>
+
+  <script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
+  <script>
+    //---- jQuery Recap: ----//
+
+    /*
+    jQuery is really just a kind of syntax or slang-language that makes it easier to write certain kinds of JavaScript.
+
+    jQuery basically helps with 3 types of things:
+
+    1. Selecting stuff on the page: single things, lots of things, things next to other things, etc.
+
+    2. Manipulating stuff on the page: changing those thing's looks or content.
+
+    3. Reacting to events on the page: making something happen in response to some kind of user- or browser-initiated event (like the user clicking a link, submitting a form, scrolling the page, etc.).
+
+    Usually these things are combined together to accomplish what you want. For example, you select a button, assign an event handler on it, that then manipulates something else when that event happens.
+    */
+
+    //---- jQuery Exercise Answers: ----//
+
+    // - How do we target the HTML element with class "el"?
+    $('.el');
+
+    // - How do we make "el" disappear?
+    $('.el').hide();
+
+    //     - What exactly happened in the DOM to make el disappear?
+    // Answer: An inline style of "display: none;" was added to the element.
+
+    // - How do we make el re-appear?
+    $('.el').show();
+
+    // - How do we make el disappear slowly? Can we do it even slower?
+    $('.el').fadeOut();
+    $('.el').fadeOut(1500); // 1500 means 1500 milliseconds, or 1.5 seconds.
+
+    // - How do we make el re-appear slowly? Can we do it faster?
+    $('.el').fadeIn();
+    $('.el').fadeIn(200); // 200 means 200 milliseconds, or 0.2 seconds.
+
+    // - How do we make el collapse?
+    $('.el').slideDown();
+
+    // - How do we make el re-expand?
+    $('.el').slideUp();
+    $('.el').slideUp(1000); // can add duration in here, too.
+
+    // - How do we make el collapse if it's there, but expand if it's not, without writing a complicated "if" statement?
+    $('.el').slideToggle();
+
+    //     - What's a common page element that might use this idea?
+    // Answer: Mobile navigation menu. Others too.
+
+    // - How do we make el's background color change? (There are several ways to do this. Could you do it without inline styles?)
+    $('.el').css('background-color', 'green');
+    $('.el').attr('style', 'background-color: green');
+    $('.el').addClass('alt'); // only works because we have a CSS style for ".alt" already, in the <style> block above!
+
+    // - How can we go back and forth between classes?
+    $('.el').toggleClass('alt'); // notice, you DON'T add a dot before "alt" here!
+
+    //     - Can we use this new back-and-forth idea with other actions?
+    $('.el').fadeToggle();
+
+    // - How do we change the text inside el?
+    $('.el').text("Here's my new text!");
+
+    //     - Whoops! Did we remove the link and button too? If so, why?
+    // Answer: The "text" function replaces EVERYTHING inside el with whatever you write.
+
+    //     - What if we wanted to make our new text italic?
+    $('.el').html("<em>Here's my italic text!</em>");
+
+    // - How do we add a photo into el? (http://lorempixel.com/300/200/)
+    $('.el').append('<img src="http://lorempixel.com/300/200/>');
+
+    // - How to we get rid of everything inside el, but keep it? Can you think of 2 ways?
+    $('.el').empty();
+    $('.el').text("");
+
+    // - How do we actually take el out of the page entirely (instead of just hiding it)?
+    $('.el').remove();
+    $('.el').detach(); // preserves any functions that existed for that element
+
+    // - Can we change both the page AND el's background colors in a SINGLE command? If so, how?
+    $('body, .el').css('background-color', 'green');
+
+    // - What if we wanted to make el collapse, and THEN change the page's background color?
+    $('.el').slideUp(1000, function(){
+      $('body').css('background-color', 'green');
+    });
+
+    // - How do we add another "el" element onto the page AFTER el?
+    $('.el').after('<div class="el">Another El!</div>');
+
+    // - How do we add another "el" element onto the page BEFORE el?
+    $('.el').before('<div class="el alt">Alternative El!</div>');
+
+    //     - Whoops! We actually added 2 new elements. Why?
+    // Answer: Because $('.el') selects EVERY element on the page with the "el" class. Since we added 1 with .after(), our new .before() function targeted BOTH of them and put a new element before EACH of them.
+
+    // - How do we get rid of ONLY the first "el" element?
+    $('.el').first().remove(); // This is an example of function "chaining": we're first running the "first" function, to more narrowly specify what we're selecting, then we're adding the "remove" function on top of it, to remove just that specific element.
+
+    // - How do we only add an element AFTER the last element?
+    $('.el').last().after('<div class="el alt2">I am the last El now!</div>');
+
+    // - How do we detect if the button is clicked on?
+    $('input').click();
+    $('input').on('click');
+
+    //     - How do we make something happen when the button is clicked?
+    $('input').click(function() {
+      // Whatever we put here will execute when the input is clicked.
+    });
+    $('input').on('click', function() {
+      // This is the exact same as the "click" function above.
+    });
+
+    // - How do we disable the button?
+    $('input').attr('disabled', true);
+
+    //     - Does our click-detecting function work anymore?
+    // Answer: No. When a button is disabled, the user can't click on it.
+
+    // - How do we re-enable the button?
+    $('input').removeAttr('disabled');
+
+    //     - How could we remove inline styles using this same idea?
+    $('.el').removeAttr('style'); // Inline styles are stored in an element's "style" attribute, so if we remove it, the inline styles go away.
+
+    // - How do we prevent the link click from opening the linked page?
+    $('a').on('click', function(e) {
+      e.preventDefault(); // since by default clicking on a hyperlink takes you to that linked page, if you prevent the default, it won't take you there.
+      // Hyperlinks and form submissions are the 2 major places where you'll likely use preventDefault.
+    });
+
+    // - How do we detect if the button is hovered over?
+    $('input').mouseenter();
+    $('input').mouseenter(function() {
+      // Whatever we put here will execute when the user hovers over the input.
+    });
+    // Notice I didn't choose .hover() or .mouseover(), which both exist.
+    // BAD: $('input').hover(); // This executes on entering AND LEAVING, usually undesirable.
+    // ALSO BAD: $('input').mouseover(); // This executes on entering EVERY CHILD in the element, usually undesirable.
+
+    // - Man, that's annoying. How do we REMOVE that hover-detecting function we just created?
+    $('input').off('mouseenter');
+
+    //     - Why is this function called what it is?
+    // Answer: ".mouseenter" is a short-hand alias for the real function name, which is ".on('mouseenter')". "On" adds the event listener to the element, and "off" removes the event listener from the element. You can also think of it like you're "turning off" that event for that handler, if it helps.
+
+    // - How could we only do something the FIRST time the button is hovered over, but never again?
+    $('input').one('mouseenter', function() {
+      // Whatever we put here will execute the FIRST time the user hovers over the input, but not again anytime after that.
+    });
+
+    // - How do we make our click-function happen without actually clicking on it?
+    $('input').trigger('click');
+
+    // - How do we prevent our button click from also being detected as a click on el? (This is a hard one, but really nice to know.)
+    $('input').on('click', function(e) {
+      e.stopPropagation(); // This event won't "bubble up."
+    });
+
+    // - How can we POSSIBLY REMEMBER all these?
+    // Answer: We don't have to. They're all listed and explained at http://api.jquery.com/
+  </script>
+
+</body>
+</html>
