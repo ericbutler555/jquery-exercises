@@ -42,11 +42,11 @@
 
     1. Selecting stuff on the page: single things, lots of things, things next to other things, etc.
 
-    2. Manipulating stuff on the page: changing those thing's looks or content.
+    2. Manipulating stuff on the page: changing the look or content of the things you selected.
 
     3. Reacting to events on the page: making something happen in response to some kind of user- or browser-initiated event (like the user clicking a link, submitting a form, scrolling the page, etc.).
 
-    Usually these things are combined together to accomplish what you want. For example, you select a button, assign an event handler on it, that then manipulates something else when that event happens.
+    Usually these things are combined together to accomplish what you want. For example, you select a button, assign an event handler on it, and that event handler manipulates something else whenever that event happens.
     */
 
     //---- jQuery Exercise Answers: ----//
@@ -137,10 +137,10 @@
     $('.el').first().remove(); // This is an example of function "chaining": we're first running the "first" function, to more narrowly specify what we're selecting, then we're adding the "remove" function on top of it, to remove just that specific element.
 
     // - How do we only add an element AFTER the last element?
-    $('.el').last().after('<div class="el alt2">I am the last El now!</div>');
+    $('.el').last().after('<div class="el">I am the last El now!</div>');
 
     // - How do we add an element after the SECOND element?
-    $('.el').eq(2).after('<div class="el alt2">I am the last El now!</div>');
+    $('.el').eq(2).after('<div class="el">I am after the second El!</div>');
 
     // - How do we detect if the button is clicked on?
     $('input').click();
@@ -207,7 +207,8 @@
 
     // - How can we POSSIBLY REMEMBER all these?
     // Answer: We don't have to. They're all listed and explained at http://api.jquery.com/
-    // Bonus: All of these things can be handled by plain JavaScript, sometimes just as easily. Check out http://youmightnotneedjquery.com/ to see how.
+    // Bonus: All of these things can be accomplished with plain JavaScript,
+    //   sometimes just as easily. Check out http://youmightnotneedjquery.com/ to see how.
   </script>
 
 </body>
