@@ -72,11 +72,11 @@
     $('.el').fadeIn(200); // 200 means 200 milliseconds, or 0.2 seconds.
 
     // - How do we make el collapse?
-    $('.el').slideDown();
+    $('.el').slideUp();
 
     // - How do we make el re-expand?
-    $('.el').slideUp();
-    $('.el').slideUp(1000); // can add duration in here, too.
+    $('.el').slideDown();
+    $('.el').slideDown(1000); // can add duration in here, too.
 
     // - How do we make el collapse if it's there, but expand if it's not, without writing a complicated "if" statement?
     $('.el').slideToggle();
