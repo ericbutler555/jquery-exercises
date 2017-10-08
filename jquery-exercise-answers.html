@@ -1,3 +1,4 @@
+<!-- Scroll down to the <script> tag to see the solutions to the exercises. -->
 <!DOCTYPE html>
 <html>
 <head>
@@ -26,8 +27,8 @@
 <body>
 
   <div class="el">
-    <p>Hello, I'm el.</p>
-    <p><a href="https://stackoverflow.com/" target="_blank">I'm a link.</a></p>
+    <p>Hello, I'm "el"</p>
+    <p><a href="https://stackoverflow.com/" target="_blank">I'm a link</a></p>
     <input type="submit" value="I'm a button">
   </div>
 
@@ -110,7 +111,7 @@
 
     // - How to we get rid of everything inside el, but keep it? Can you think of 2 ways?
     $('.el').empty();
-    $('.el').text("");
+    $('.el').text(""); // this replaces everything inside el with an "empty string," aka nothing.
 
     // - How do we actually take el out of the page entirely (instead of just hiding it)?
     $('.el').remove();
@@ -143,12 +144,12 @@
     $('.el').eq(2).after('<div class="el">I am after the second El!</div>');
 
     // - How do we detect if the button is clicked on?
-    $('input').click();
-    $('input').on('click');
+    $('input').click( /* do stuff */ );
+    $('input').on('click', /* do stuff */ );
 
     //     - How do we make something happen when the button is clicked?
     $('input').click(function() {
-      // Whatever we put here will execute when the input is clicked.
+      // Whatever we put here will execute every time the input is clicked.
     });
     // Or:
     $('input').on('click', function() {
@@ -174,9 +175,10 @@
     });
 
     // - How do we detect if the button is hovered over?
-    $('input').mouseenter();
-    $('input').mouseenter(function() {
-      // Whatever we put here will execute when the user hovers over the input.
+    $('input').mouseenter( /* do stuff */ );
+    // Or:
+    $('input').on('mouseenter', function() {
+      // Whatever we put here will execute every time the user hovers over the input.
     });
     // Notice I didn't choose .hover() or .mouseover(), which both exist.
     // BAD: $('input').hover(); // This executes on entering AND LEAVING, usually undesirable.
@@ -196,9 +198,9 @@
     // - How do we make our click-function happen without actually clicking on it?
     $('input').trigger('click');
 
-    // - How do we prevent our button click from also being detected as a click on el?
+    // - How do we prevent our button click from also being detected as a click on el, its parent container?
     $('.el').on('click', function() {
-        // This creates a click-handler for el.
+        // Let's say you already had this click-handler for el.
     });
     $('input').on('click', function(e) {
       e.stopPropagation();
